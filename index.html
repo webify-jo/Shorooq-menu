@@ -10,9 +10,14 @@
 </head>
 <body>
 
-    <!-- الهيدر مع زر الترجمة -->
+    <!-- الهيدر مع زر الترجمة وزر الواتساب أعلى اليسار -->
     <header class="header">
-        <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
+        <div class="top-buttons">
+            <a href="https://wa.me/962790227489" target="_blank" class="whatsapp-top-btn" title="تواصل واتساب">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
+        </div>
         <div class="header-bg"></div>
         <div class="header-content">
             <h1>SHOROOQ SALAH</h1>
@@ -23,10 +28,13 @@
     <!-- الأقسام -->
     <main class="menu-container" id="menuContainer"></main>
 
-    <!-- قسم التواصل ومواقع التواصل الاجتماعي والموقع (اللوكيشن) -->
+    <!-- قسم التواصل ومواقع التواصل الاجتماعي واللوكيشن -->
     <section class="contact-section">
         <h3 id="connectTitle">تواصل معنا & موقعنا</h3>
         <div class="social-links">
+            <a href="https://wa.me/962790227489" target="_blank" class="social-btn wa">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
             <a href="https://www.instagram.com/ss_beauty_salon_jo?dlrf=cTdiODYxZm45Y2xh" target="_blank" class="social-btn insta">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
