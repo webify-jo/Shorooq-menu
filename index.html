@@ -24,8 +24,21 @@
         </div>
     </header>
 
-    <!-- الأقسام -->
+    <!-- الأقسام الرئيسية -->
     <main class="menu-container" id="menuContainer"></main>
+
+    <!-- النافذة المنبثقة (Pop-up Modal) لأقسام الشعر -->
+    <div id="hairModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">عنوان القسم</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة خدمات القسم هنا تلقائياً -->
+            </div>
+        </div>
+    </div>
 
     <!-- قسم التواصل ومواقع التواصل الاجتماعي واللوكيشن -->
     <section class="contact-section">
@@ -54,7 +67,6 @@
     <script>
         let currentLang = 'ar';
         let openSectionId = null;
-        let openSubSectionId = null;
 
         const translations = {
             ar: {
@@ -97,6 +109,7 @@
                             {
                                 id: "hair_styling",
                                 title: "التساريح والستشوار",
+                                icon: "fa-wind",
                                 items: [
                                     { name: "حمام الشعر", price: "٢ دينار" },
                                     { name: "ويفي ستايل", price: "١٥ دينار" },
@@ -112,6 +125,7 @@
                             {
                                 id: "hair_cutting",
                                 title: "قص الشعر",
+                                icon: "fa-scissors",
                                 items: [
                                     { name: "غرة ستريت", price: "مجاناً" },
                                     { name: "غرة تدريج", price: "٢ دينار" },
@@ -125,6 +139,7 @@
                             {
                                 id: "hair_coloring",
                                 title: "صبغ وتلوين الشعر",
+                                icon: "fa-palette",
                                 items: [
                                     { name: "تست قبل الصبغة واستشارة", price: "مجاني" },
                                     { name: "صبغة جذور (يشمل رينس مجاني)", price: "١٠ دنانير" },
@@ -137,6 +152,7 @@
                             {
                                 id: "hair_care",
                                 title: "جلسات العناية بالشعر",
+                                icon: "fa-spa",
                                 items: [
                                     { name: "جلسة ديتوكس فروة الرأس", price: "١٥ دينار" },
                                     { name: "جلسة كيو ويب للتغذية والترطيب العميق", price: "١٥ دينار" },
@@ -149,6 +165,7 @@
                             {
                                 id: "hair_treatment",
                                 title: "فرد الشعر الدائم",
+                                icon: "fa-spray-can-sparkles",
                                 items: [
                                     { name: "فرد بمادة ماء الذهب (حسب الطول والكثافة)", price: "ابتداءً من ٥٠ دينار" },
                                     { name: "فرد بمادة بوتوكس الشعر (حسب الطول والكثافة)", price: "ابتداءً من ٣٥ دينار" }
@@ -231,6 +248,7 @@
                             {
                                 id: "hair_styling",
                                 title: "Styling & Blow Dry",
+                                icon: "fa-wind",
                                 items: [
                                     { name: "Hair Wash", price: "2 JOD" },
                                     { name: "Wavy Style", price: "15 JOD" },
@@ -246,6 +264,7 @@
                             {
                                 id: "hair_cutting",
                                 title: "Hair Cutting",
+                                icon: "fa-scissors",
                                 items: [
                                     { name: "Straight Bangs Trim", price: "Free" },
                                     { name: "Layered Bangs Trim", price: "2 JOD" },
@@ -259,6 +278,7 @@
                             {
                                 id: "hair_coloring",
                                 title: "Hair Coloring",
+                                icon: "fa-palette",
                                 items: [
                                     { name: "Hair Dye Strand Test & Consultation", price: "Free" },
                                     { name: "Root Touch-up (Includes free rinse)", price: "10 JOD" },
@@ -271,6 +291,7 @@
                             {
                                 id: "hair_care",
                                 title: "Hair Care Sessions",
+                                icon: "fa-spa",
                                 items: [
                                     { name: "Scalp Detox Session", price: "15 JOD" },
                                     { name: "Q-Web Deep Nourishing & Hydration Session", price: "15 JOD" },
@@ -283,6 +304,7 @@
                             {
                                 id: "hair_treatment",
                                 title: "Permanent Hair Treatment",
+                                icon: "fa-spray-can-sparkles",
                                 items: [
                                     { name: "Gold Water Keratin Treatment (By length & thickness)", price: "From 50 JOD" },
                                     { name: "Hair Botox Treatment (By length & thickness)", price: "From 35 JOD" }
@@ -345,28 +367,19 @@
                 
                 let contentHtml = '';
                 if (cat.isSub) {
+                    // إذا كان القسم يحتوي على أقسام فرعية (مثل الشعر)، نعرضها كشبكة مربعات (Grid)
+                    contentHtml = `<div class="sub-blocks-grid">`;
                     cat.subSections.forEach(sub => {
-                        const isSubOpen = openSubSectionId === sub.id;
-                        let subItemsHtml = sub.items.map(item => `
-                            <div class="service-item">
-                                <span>${item.name}</span>
-                                <span class="price">${item.price}</span>
-                            </div>
-                        `).join('');
-
                         contentHtml += `
-                            <div class="sub-category-card ${isSubOpen ? 'active' : ''}" onclick="event.stopPropagation(); toggleSubSection('${sub.id}')">
-                                <div class="sub-card-header">
-                                    <h3>${sub.title}</h3>
-                                    <i class="fa-solid fa-chevron-down sub-arrow"></i>
-                                </div>
-                                <div id="${sub.id}" class="sub-card-content" style="display: ${isSubOpen ? 'block' : 'none'};">
-                                    ${subItemsHtml}
-                                </div>
+                            <div class="sub-category-block" onclick="event.stopPropagation(); openHairModal('${sub.id}')">
+                                <i class="fa-solid ${sub.icon}"></i>
+                                <h3>${sub.title}</h3>
                             </div>
                         `;
                     });
+                    contentHtml += `</div>`;
                 } else {
+                    // الأقسام العادية (العروس، المكياج، إلخ) تفتح خدماتها مباشرة
                     contentHtml = cat.items.map(item => `
                         <div class="service-item">
                             <span>${item.name}</span>
@@ -392,19 +405,52 @@
 
         function toggleSection(id) {
             openSectionId = (openSectionId === id) ? null : id;
-            if(id !== 'hair') openSubSectionId = null;
             renderMenu();
         }
 
-        function toggleSubSection(subId) {
-            openSubSectionId = (openSubSectionId === subId) ? null : subId;
-            renderMenu();
+        // فتح النافذة المنبثقة (Pop-up) لقسم الشعر الفرعي المختار
+        function openHairModal(subId) {
+            const data = translations[currentLang];
+            const hairCategory = data.categories.find(c => c.id === 'hair');
+            const subSec = hairCategory.subSections.find(s => s.id === subId);
+
+            if (!subSec) return;
+
+            document.getElementById('modalTitle').innerText = subSec.title;
+
+            let html = '';
+            subSec.items.forEach(item => {
+                html += `
+                    <div class="modal-item">
+                        <div class="modal-item-info">
+                            <h4>${item.name}</h4>
+                        </div>
+                        <div class="modal-item-price">${item.price}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('hairModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('hairModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // إغلاق النافذة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('hairModal');
+            if (event.target === modal) {
+                closeModal();
+            }
         }
 
         function toggleLanguage() {
             currentLang = (currentLang === 'ar') ? 'en' : 'ar';
             openSectionId = null;
-            openSubSectionId = null;
             renderMenu();
         }
 
