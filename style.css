@@ -30,6 +30,7 @@ body {
     text-align: center;
     overflow: hidden;
     border-bottom: 3px solid var(--primary-color);
+    background-color: #e6dfd5;
 }
 
 .header-bg {
@@ -38,18 +39,18 @@ body {
     background-image: url('46d3a387-3bd2-41bc-b02e-7036661c0460.jpeg');
     background-size: cover;
     background-position: center;
-    /* التمويها الخفيف وإضافة طبقة تفتيح لتظهر الكتابة بوضوح */
-    filter: blur(3px);
+    /* تمويها خفيف وإضاءة لتبرز الكتابة فوقها */
+    filter: blur(4px);
     transform: scale(1.1);
     z-index: 1;
 }
 
-/* طبقة شفافة فوق الخلفية لزيادة وضوح النصوص */
+/* طبقة شفافة فوق الخلفية لضمان قراءة النص بوضوح تام */
 .header::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.65);
     z-index: 2;
 }
 
@@ -150,7 +151,6 @@ body {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     display: flex;
-    justify-content: space-name;
     justify-content: space-between;
     align-items: center;
     border-right: 4px solid var(--primary-color);
