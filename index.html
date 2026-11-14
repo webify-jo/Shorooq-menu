@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- الهيدر: الصورة أصبحت خلفية كاملة وممتدة -->
+    <!-- الهيدر -->
     <header class="header">
         <div class="header-bg"></div>
         <div class="header-content">
@@ -19,154 +19,179 @@
         </div>
     </header>
 
-    <!-- شريط الأقسام للتنقل السريع -->
-    <nav class="categories-nav">
-        <button class="cat-btn active" onclick="filterCategory('all', this)">الكل</button>
-        <button class="cat-btn" onclick="filterCategory('bridal', this)">العروس</button>
-        <button class="cat-btn" onclick="filterCategory('makeup', this)">المكياج</button>
-        <button class="cat-btn" onclick="filterCategory('hair', this)">الشعر</button>
-        <button class="cat-btn" onclick="filterCategory('face', this)">إزالة الشعر</button>
-        <button class="cat-btn" onclick="filterCategory('lashes', this)">الرموش والحواجب</button>
-    </nav>
-
-    <!-- محتوى المنيو -->
-    <main class="menu-container">
-
-        <!-- 1. قسم العروس -->
-        <section class="menu-section" data-category="bridal">
-            <h2><i class="fa-solid fa-ring"></i> العروس</h2>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-info">
-                        <h3>باكيج عروس أبيض (1)</h3>
-                        <p>مكياج + تسريحة + بدي فاونديشن + تلبيس البدلة</p>
-                    </div>
-                    <div class="item-price">٢٠٠ دينار</div>
-                </div>
-                <div class="item-card">
-                    <div class="item-info">
-                        <h3>باكيج عروس أبيض (2)</h3>
-                        <p>مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر (تركيب) لون عادي</p>
-                    </div>
-                    <div class="item-price">٢٥٠ دينار</div>
-                </div>
-                <div class="item-card">
-                    <div class="item-info">
-                        <h3>باكيج عروس أبيض (3)</h3>
-                        <p>مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر جل كلر</p>
-                    </div>
-                    <div class="item-price">٣٠٠ دينار</div>
-                </div>
-                <div class="item-card">
-                    <div class="item-info">
-                        <h3>عروس خطبة</h3>
-                        <p>مكياج + تسريحة + تلبيس بدلة</p>
-                    </div>
-                    <div class="item-price">١٥٠ دينار</div>
-                </div>
+    <!-- حاوية مربعات الأقسام (Blocks Grid) -->
+    <main class="blocks-container">
+        <h2 class="section-title">أقسام الخدمات</h2>
+        
+        <div class="blocks-grid">
+            <div class="category-block" onclick="openModal('bridal')">
+                <i class="fa-solid fa-ring"></i>
+                <h3>العروس</h3>
+                <p>باكيجات العروس والخطبة</p>
             </div>
-        </section>
 
-        <!-- 2. قسم المكياج -->
-        <section class="menu-section" data-category="makeup">
-            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> المكياج</h2>
-            <div class="items-grid">
-                <div class="item-card"><div class="item-info"><h3>مكياج عيون بدون رموش</h3></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>مكياج عيون مع رموش</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>مكياج وجه كامل بدون رموش</h3></div><div class="item-price">٢٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>مكياج وجه كامل مع رموش</h3></div><div class="item-price">٢٥ دينار</div></div>
+            <div class="category-block" onclick="openModal('makeup')">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h3>المكياج</h3>
+                <p>مكياج عيون ووجه كامل</p>
             </div>
-        </section>
 
-        <!-- 3. قسم الشعر -->
-        <section class="menu-section" data-category="hair">
-            <h2><i class="fa-solid fa-scissors"></i> الشعر (تساريح، قص، صبغة، وعناية)</h2>
-            <div class="items-grid">
-                <div class="item-card"><div class="item-info"><h3>حمام الشعر</h3></div><div class="item-price">٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>ويفي ستايل</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>ريترو ستايل</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تساريح نص رفع</h3></div><div class="item-price">٢٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تساريح رفع كامل</h3></div><div class="item-price">٢٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تسريحة رفع / نص رفع أطفال</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تسريحة ويفي أطفال</h3></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>سشوار</h3><p>حسب طول وكثافة الشعر</p></div><div class="item-price">٥ - ١٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>سشوار ويفي</h3><p>إضافة على السشوار</p></div><div class="item-price">+٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>غرة ستريت</h3></div><div class="item-price">مجاناً</div></div>
-                <div class="item-card"><div class="item-info"><h3>غرة تدريج</h3></div><div class="item-price">٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>أطراف الشعر</h3></div><div class="item-price">٣ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>قصة كاملة</h3></div><div class="item-price">٥ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>قص شعر كيرلي</h3></div><div class="item-price">٧ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>قص شعر أطفال</h3></div><div class="item-price">٣ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>قص أطراف شعر أطفال</h3></div><div class="item-price">٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تست قبل الصبغة واستشارة</h3></div><div class="item-price">مجاني</div></div>
-                <div class="item-card"><div class="item-info"><h3>صبغة جذور</h3><p>يشمل رينس مجاني</p></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>صبغة لون واحد</h3><p>باستخدام مواد الزبونة</p></div><div class="item-price">٥ - ٧ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>صبغة لون واحد بدون سحب لون</h3><p>حسب الطول والكثافة</p></div><div class="item-price">١٥ - ٤٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>إضافة سحب لون</h3></div><div class="item-price">٢٠ - ٣٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تخصيل الشعر بجميع أشكاله</h3></div><div class="item-price">ابتداءً من ٥٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>جلسة ديتوكس فروة الرأس</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>جلسة "كيو ويب" للتغذية والترطيب العميق</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>جلسة زيت بذور العنب للترطيب الداخلي</h3></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>باكيج ديتوكس فروة الرأس + جلسة "كيو ويب"</h3></div><div class="item-price">٢٣ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>باكيج ديتوكس فروة الرأس + جلسة بذور العنب</h3></div><div class="item-price">٢٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>إضافة قص + سشوار إلى جلسات العناية</h3></div><div class="item-price">٥ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>فرد بمادة ماء الذهب</h3><p>حسب الطول والكثافة</p></div><div class="item-price">ابتداءً من ٥٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>فرد بمادة بوتوكس الشعر</h3><p>حسب الطول والكثافة</p></div><div class="item-price">ابتداءً من ٣٥ دينار</div></div>
+            <div class="category-block" onclick="openModal('hair')">
+                <i class="fa-solid fa-scissors"></i>
+                <h3>الشعر</h3>
+                <p>تساريح، قص، صبغة، وفرد</p>
             </div>
-        </section>
 
-        <!-- 4. قسم إزالة شعر الوجه -->
-        <section class="menu-section" data-category="face">
-            <h2><i class="fa-solid fa-spa"></i> إزالة شعر الوجه</h2>
-            <div class="items-grid">
-                <div class="item-card"><div class="item-info"><h3>واكس الوجه كامل</h3></div><div class="item-price">٥ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>واكس الوجه مع أسفل الذقن والرقبة</h3></div><div class="item-price">٧ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>خيط وجه كامل</h3></div><div class="item-price">٥ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>حواجب</h3></div><div class="item-price">٢ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>شوارب</h3></div><div class="item-price">١ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>إزالة شعر الوجه بالديرمابلانينج</h3></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>إزالة شعر الوجه بالشيفنج (فلامينجو)</h3></div><div class="item-price">٣ دنانير</div></div>
+            <div class="category-block" onclick="openModal('face')">
+                <i class="fa-solid fa-spa"></i>
+                <h3>إزالة شعر الوجه</h3>
+                <p>واكس، خيط، وديرمابلانينج</p>
             </div>
-        </section>
 
-        <!-- 5. قسم الرموش والحواجب -->
-        <section class="menu-section" data-category="lashes">
-            <h2><i class="fa-solid fa-eye"></i> تجميل الرموش والحواجب</h2>
-            <div class="items-grid">
-                <div class="item-card"><div class="item-info"><h3>رفع الرموش LVL</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>رفع الحواجب (هافانا) مع تشقير</h3></div><div class="item-price">١٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>رفع الرموش + حواجب</h3></div><div class="item-price">٢٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تشقير الحواجب بدون رفع</h3></div><div class="item-price">٥ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش "لاين" يومي</h3></div><div class="item-price">٣ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش أسبوعي</h3></div><div class="item-price">١٠ دنانير</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري كلاسيك</h3></div><div class="item-price">٢٥ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري هايبرد</h3></div><div class="item-price">٣٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري فوليوم</h3></div><div class="item-price">٤٠ دينار</div></div>
-                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري سيلك</h3></div><div class="item-price">٥٠ دينار</div></div>
+            <div class="category-block" onclick="openModal('lashes')">
+                <i class="fa-solid fa-eye"></i>
+                <h3>الرموش والحواجب</h3>
+                <p>رفع وتوسيع وتركيب رموش</p>
             </div>
-        </section>
-
+        </div>
     </main>
+
+    <!-- النافذة المنبثقة (Pop-up Modal) -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">عنوان القسم</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- سيتم تعبئة الخدمات هنا تلقائياً -->
+            </div>
+        </div>
+    </div>
 
     <!-- الفوتر -->
     <footer>
         <p>© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.</p>
     </footer>
 
+    <!-- بيانات الخدمات والسكريبت -->
     <script>
-        function filterCategory(category, clickedBtn) {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            clickedBtn.classList.add('active');
+        const servicesData = {
+            bridal: {
+                title: "العروس",
+                items: [
+                    { name: "باكيج عروس أبيض (1)", desc: "مكياج + تسريحة + بدي فاونديشن + تلبيس البدلة", price: "٢٠٠ دينار" },
+                    { name: "باكيج عروس أبيض (2)", desc: "مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر (تركيب) لون عادي", price: "٢٥٠ دينار" },
+                    { name: "باكيج عروس أبيض (3)", desc: "مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر جل كلر", price: "٣٠٠ دينار" },
+                    { name: "عروس خطبة", desc: "مكياج + تسريحة + تلبيس بدلة", price: "١٥٠ دينار" }
+                ]
+            },
+            makeup: {
+                title: "المكياج",
+                items: [
+                    { name: "مكياج عيون بدون رموش", desc: "", price: "١٠ دنانير" },
+                    { name: "مكياج عيون مع رموش", desc: "", price: "١٥ دينار" },
+                    { name: "مكياج وجه كامل بدون رموش", desc: "", price: "٢٠ دينار" },
+                    { name: "مكياج وجه كامل مع رموش", desc: "", price: "٢٥ دينار" }
+                ]
+            },
+            hair: {
+                title: "الشعر (تساريح، قص، صبغة، وعناية)",
+                items: [
+                    { name: "حمام الشعر", desc: "", price: "٢ دينار" },
+                    { name: "ويفي ستايل", desc: "", price: "١٥ دينار" },
+                    { name: "ريترو ستايل", desc: "", price: "١٥ دينار" },
+                    { name: "تساريح نص رفع", desc: "", price: "٢٠ دينار" },
+                    { name: "تساريح رفع كامل", desc: "", price: "٢٠ دينار" },
+                    { name: "تسريحة رفع / نص رفع أطفال", desc: "", price: "١٥ دينار" },
+                    { name: "تسريحة ويفي أطفال", desc: "", price: "١٠ دنانير" },
+                    { name: "سشوار", desc: "حسب طول وكثافة الشعر", price: "٥ - ١٢ دينار" },
+                    { name: "سشوار ويفي", desc: "إضافة على السشوار", price: "+٢ دينار" },
+                    { name: "غرة ستريت", desc: "", price: "مجاناً" },
+                    { name: "غرة تدريج", desc: "", price: "٢ دينار" },
+                    { name: "أطراف الشعر", desc: "", price: "٣ دنانير" },
+                    { name: "قصة كاملة", desc: "", price: "٥ دنانير" },
+                    { name: "قص شعر كيرلي", desc: "", price: "٧ دنانير" },
+                    { name: "قص شعر أطفال", desc: "", price: "٣ دنانير" },
+                    { name: "قص أطراف شعر أطفال", desc: "", price: "٢ دينار" },
+                    { name: "تست قبل الصبغة واستشارة", desc: "", price: "مجاني" },
+                    { name: "صبغة جذور", desc: "يشمل رينس مجاني", price: "١٠ دنانير" },
+                    { name: "صبغة لون واحد", desc: "باستخدام مواد الزبونة", price: "٥ - ٧ دنانير" },
+                    { name: "صبغة لون واحد بدون سحب لون", desc: "حسب الطول والكثافة", price: "١٥ - ٤٠ دينار" },
+                    { name: "إضافة سحب لون", desc: "", price: "٢٠ - ٣٠ دينار" },
+                    { name: "تخصيل الشعر بجميع أشكاله", desc: "ابتداءً من", price: "٥٠ دينار" },
+                    { name: "جلسة ديتوكس فروة الرأس", desc: "", price: "١٥ دينار" },
+                    { name: "جلسة كيو ويب للتغذية والترطيب العميق", desc: "", price: "١٥ دينار" },
+                    { name: "جلسة زيت بذور العنب للترطيب الداخلي", desc: "", price: "١٠ دنانير" },
+                    { name: "باكيج ديتوكس فروة الرأس + جلسة كيو ويب", desc: "", price: "٢٣ دينار" },
+                    { name: "باكيج ديتوكس فروة الرأس + جلسة بذور العنب", desc: "", price: "٢٠ دينار" },
+                    { name: "إضافة قص + سشوار إلى جلسات العناية", desc: "", price: "٥ دنانير" },
+                    { name: "فرد بمادة ماء الذهب", desc: "حسب الطول والكثافة", price: "ابتداءً من ٥٠ دينار" },
+                    { name: "فرد بمادة بوتوكس الشعر", desc: "حسب الطول والكثافة", price: "ابتداءً من ٣٥ دينار" }
+                ]
+            },
+            face: {
+                title: "إزالة شعر الوجه",
+                items: [
+                    { name: "واكس الوجه كامل", desc: "", price: "٥ دنانير" },
+                    { name: "واكس الوجه مع أسفل الذقن والرقبة", desc: "", price: "٧ دنانير" },
+                    { name: "خيط وجه كامل", desc: "", price: "٥ دنانير" },
+                    { name: "حواجب", desc: "", price: "٢ دينار" },
+                    { name: "شوارب", desc: "", price: "١ دينار" },
+                    { name: "إزالة شعر الوجه بالديرمابلانينج", desc: "", price: "١٠ دنانير" },
+                    { name: "إزالة شعر الوجه بالشيفنج (فلامينجو)", desc: "", price: "٣ دنانير" }
+                ]
+            },
+            lashes: {
+                title: "تجميل الرموش والحواجب",
+                items: [
+                    { name: "رفع الرموش LVL", desc: "", price: "١٥ دينار" },
+                    { name: "رفع الحواجب (هافانا) مع تشقير", desc: "", price: "١٥ دينار" },
+                    { name: "رفع الرموش + حواجب", desc: "", price: "٢٥ دينار" },
+                    { name: "تشقير الحواجب بدون رفع", desc: "", price: "٥ دنانير" },
+                    { name: "تركيب رموش لاين يومي", desc: "", price: "٣ دنانير" },
+                    { name: "تركيب رموش أسبوعي", desc: "", price: "١٠ دنانير" },
+                    { name: "تركيب رموش شهري كلاسيك", desc: "", price: "٢٥ دينار" },
+                    { name: "تركيب رموش شهري هايبرد", desc: "", price: "٣٠ دينار" },
+                    { name: "تركيب رموش شهري فوليوم", desc: "", price: "٤٠ دينار" },
+                    { name: "تركيب رموش شهري سيلك", desc: "", price: "٥٠ دينار" }
+                ]
+            }
+        };
 
-            const sections = document.querySelectorAll('.menu-section');
-            sections.forEach(section => {
-                if (category === 'all' || section.getAttribute('data-category') === category) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
+        function openModal(categoryKey) {
+            const category = servicesData[categoryKey];
+            document.getElementById('modalTitle').innerText = category.title;
+            
+            let html = '';
+            category.items.forEach(item => {
+                html += `
+                    <div class="modal-item">
+                        <div class="modal-item-info">
+                            <h4>${item.name}</h4>
+                            ${item.desc ? `<p>${item.desc}</p>` : ''}
+                        </div>
+                        <div class="modal-item-price">${item.price}</div>
+                    </div>
+                `;
             });
+
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('serviceModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // منع التمرير للخلفية
+        }
+
+        function closeModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // إغلاق النافذة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('serviceModal');
+            if (event.target === modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
