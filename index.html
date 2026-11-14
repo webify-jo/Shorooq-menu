@@ -10,9 +10,12 @@
 </head>
 <body>
 
-    <!-- الهيدر مع العنوان على اليمين وزر الترجمة على اليسار -->
+    <!-- الهيدر مع رابط اللوكيشن المباشر على اليمين وزر الترجمة على اليسار -->
     <header class="header">
-        <div class="header-location-badge" id="headerLocation">طبربور، عمان</div>
+        <a href="https://maps.app.goo.gl/oxTkwjNAvW4aYfPP9?g_st=ic" target="_blank" class="header-location-badge">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="headerLocation">طبربور، عمان</span>
+        </a>
         <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
         <div class="header-bg"></div>
         <div class="header-content">
@@ -38,10 +41,10 @@
                 <i class="fa-brands fa-facebook-f"></i> Facebook
             </a>
         </div>
-        <div class="location-box">
+        <a href="https://maps.app.goo.gl/oxTkwjNAvW4aYfPP9?g_st=ic" target="_blank" class="location-box">
             <i class="fa-solid fa-location-dot"></i>
             <span id="locationText">الموقع: طبربور، عمان، الأردن</span>
-        </div>
+        </a>
     </section>
 
     <footer>
