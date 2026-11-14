@@ -32,22 +32,51 @@ body {
     background-color: #e6dfd5;
 }
 
-/* زر الترجمة */
-.lang-btn {
+/* حاوية الأزرار العلوية (الواتساب والترجمة) في أقصى اليسار */
+.top-buttons {
     position: absolute;
     top: 15px;
     left: 15px;
     z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+/* زر واتساب العلوي */
+.whatsapp-top-btn {
+    background: #25d366;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-top-btn:hover {
+    transform: scale(1.1);
+}
+
+/* زر الترجمة */
+.lang-btn {
     background: rgba(255, 255, 255, 0.9);
     color: #b89728;
     border: 1.5px solid var(--primary-color);
-    padding: 5px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    height: 34px;
+    display: flex;
+    align-items: center;
 }
 
 .lang-btn:hover {
@@ -227,21 +256,26 @@ body {
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .social-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
+    gap: 6px;
+    padding: 8px 14px;
     border-radius: 25px;
     color: var(--white);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     text-decoration: none;
     transition: opacity 0.2s;
+}
+
+.social-btn.wa {
+    background-color: #25d366;
 }
 
 .social-btn.insta {
