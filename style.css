@@ -19,6 +19,30 @@ body {
     line-height: 1.6;
 }
 
+/* زر الترجمة فوق على الشمال */
+.lang-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.88);
+    color: #b89728;
+    border: 1.5px solid var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.lang-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
 /* الهيدر: صورة اللوجو المموهة في الأعلى مع الاسم الذهبي والوصف الأسود */
 .header {
     position: relative;
@@ -62,14 +86,14 @@ body {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: 3px;
-    color: #b89728; /* ذهبي */
+    color: #b89728;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
     margin-bottom: 4px;
 }
 
 .subtitle {
     font-size: 12px;
-    color: #000000; /* أسود رسمي غامق */
+    color: #000000;
     font-weight: 800;
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -165,6 +189,7 @@ body {
     border-bottom: 1px solid #f2f2f2;
     font-size: 13px;
     color: #333;
+    gap: 10px;
 }
 
 .service-item:last-child {
@@ -180,7 +205,6 @@ body {
     font-weight: 800;
     white-space: nowrap;
     border: 1px solid rgba(212, 175, 55, 0.3);
-    margin-right: 10px;
 }
 
 footer {
