@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- الهيدر مع رابط اللوكيشن المباشر على اليمين وزر الترجمة على اليسار -->
+    <!-- الهيدر مع اللوكيشن على اليمين وزر الترجمة على اليسار -->
     <header class="header">
         <a href="https://maps.app.goo.gl/oxTkwjNAvW4aYfPP9?g_st=ic" target="_blank" class="header-location-badge">
             <i class="fa-solid fa-location-dot"></i>
@@ -24,7 +24,7 @@
         </div>
     </header>
 
-    <!-- الأقسام الرئيسية -->
+    <!-- الأقسام -->
     <main class="menu-container" id="menuContainer"></main>
 
     <!-- قسم التواصل ومواقع التواصل الاجتماعي واللوكيشن -->
@@ -54,7 +54,7 @@
     <script>
         let currentLang = 'ar';
         let openSectionId = null;
-        let openSubSectionId = null; // لتتبع القسم الفرعي المفتوح داخل الشعر
+        let openSubSectionId = null;
 
         const translations = {
             ar: {
@@ -92,7 +92,7 @@
                         id: "hair",
                         icon: "fa-scissors",
                         title: "الشعر",
-                        isSub: true, // قسم رئيسي يحتوي على أقسام فرعية
+                        isSub: true,
                         subSections: [
                             {
                                 id: "hair_styling",
@@ -272,4 +272,143 @@
                                 id: "hair_care",
                                 title: "Hair Care Sessions",
                                 items: [
-                                    { name: "Scalp Detox Session", price: "15 JOD"
+                                    { name: "Scalp Detox Session", price: "15 JOD" },
+                                    { name: "Q-Web Deep Nourishing & Hydration Session", price: "15 JOD" },
+                                    { name: "Grapeseed Oil Internal Hydration Session", price: "10 JOD" },
+                                    { name: "Package: Scalp Detox + Q-Web Session", price: "23 JOD" },
+                                    { name: "Package: Scalp Detox + Grapeseed Oil Session", price: "20 JOD" },
+                                    { name: "Add Haircut + Blow Dry to Care Sessions", price: "5 JOD" }
+                                ]
+                            },
+                            {
+                                id: "hair_treatment",
+                                title: "Permanent Hair Treatment",
+                                items: [
+                                    { name: "Gold Water Keratin Treatment (By length & thickness)", price: "From 50 JOD" },
+                                    { name: "Hair Botox Treatment (By length & thickness)", price: "From 35 JOD" }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: "face",
+                        icon: "fa-spa",
+                        title: "Facial Hair Removal",
+                        isSub: false,
+                        items: [
+                            { name: "Full Face Wax", price: "5 JOD" },
+                            { name: "Full Face Wax with Chin & Neck", price: "7 JOD" },
+                            { name: "Full Face Threading", price: "5 JOD" },
+                            { name: "Eyebrows", price: "2 JOD" },
+                            { name: "Upper Lip", price: "1 JOD" },
+                            { name: "Dermaplaning Facial Hair Removal", price: "10 JOD" },
+                            { name: "Flamingo Shaving Facial Hair Removal", price: "3 JOD" }
+                        ]
+                    },
+                    {
+                        id: "lashes",
+                        icon: "fa-eye",
+                        title: "Lashes & Brows",
+                        isSub: false,
+                        items: [
+                            { name: "LVL Lash Lift", price: "15 JOD" },
+                            { name: "Havana Brow Lamination with Bleaching", price: "15 JOD" },
+                            { name: "Lash Lift + Brow Lamination", price: "25 JOD" },
+                            { name: "Brow Bleaching without Lamination", price: "5 JOD" },
+                            { name: "Daily Strip Lashes Application", price: "3 JOD" },
+                            { name: "Weekly Lashes Application", price: "10 JOD" },
+                            { name: "Monthly Classic Lash Extensions", price: "25 JOD" },
+                            { name: "Monthly Hybrid Lash Extensions", price: "30 JOD" },
+                            { name: "Monthly Volume Lash Extensions", price: "40 JOD" },
+                            { name: "Monthly Silk Lash Extensions", price: "50 JOD" }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function renderMenu() {
+            const data = translations[currentLang];
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').innerText = data.btnText;
+            document.getElementById('headerLocation').innerText = data.headerLoc;
+            document.getElementById('connectTitle').innerText = data.connect;
+            document.getElementById('locationText').innerText = data.location;
+            document.getElementById('footerText').innerText = data.footer;
+
+            const container = document.getElementById('menuContainer');
+            container.innerHTML = '';
+
+            data.categories.forEach(cat => {
+                const isOpen = openSectionId === cat.id;
+                
+                let contentHtml = '';
+                if (cat.isSub) {
+                    cat.subSections.forEach(sub => {
+                        const isSubOpen = openSubSectionId === sub.id;
+                        let subItemsHtml = sub.items.map(item => `
+                            <div class="service-item">
+                                <span>${item.name}</span>
+                                <span class="price">${item.price}</span>
+                            </div>
+                        `).join('');
+
+                        contentHtml += `
+                            <div class="sub-category-card ${isSubOpen ? 'active' : ''}" onclick="event.stopPropagation(); toggleSubSection('${sub.id}')">
+                                <div class="sub-card-header">
+                                    <h3>${sub.title}</h3>
+                                    <i class="fa-solid fa-chevron-down sub-arrow"></i>
+                                </div>
+                                <div id="${sub.id}" class="sub-card-content" style="display: ${isSubOpen ? 'block' : 'none'};">
+                                    ${subItemsHtml}
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    contentHtml = cat.items.map(item => `
+                        <div class="service-item">
+                            <span>${item.name}</span>
+                            <span class="price">${item.price}</span>
+                        </div>
+                    `).join('');
+                }
+
+                container.innerHTML += `
+                    <div class="category-card ${isOpen ? 'active' : ''}" onclick="toggleSection('${cat.id}')">
+                        <div class="card-header">
+                            <i class="fa-solid ${cat.icon}"></i>
+                            <h2>${cat.title}</h2>
+                            <i class="fa-solid fa-chevron-down arrow"></i>
+                        </div>
+                        <div id="${cat.id}" class="card-content" style="display: ${isOpen ? 'block' : 'none'};">
+                            ${contentHtml}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleSection(id) {
+            openSectionId = (openSectionId === id) ? null : id;
+            if(id !== 'hair') openSubSectionId = null;
+            renderMenu();
+        }
+
+        function toggleSubSection(subId) {
+            openSubSectionId = (openSubSectionId === subId) ? null : subId;
+            renderMenu();
+        }
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            openSectionId = null;
+            openSubSectionId = null;
+            renderMenu();
+        }
+
+        renderMenu();
+    </script>
+</body>
+</html>
