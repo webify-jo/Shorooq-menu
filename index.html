@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shorooq Salah Beauty Salon - المنيو الإلكتروني</title>
     <link rel="stylesheet" href="style.css">
-    <!-- استيراد خط أنيق من جوجل -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- الهيدر واللوجو والتفاصيل -->
+    <!-- الهيدر: الصورة أصبحت خلفية كاملة وممتدة -->
     <header class="header">
-        <div class="logo-container">
-            <img src="46d3a387-3bd2-41bc-b02e-7036661c0460.jpeg" alt="Shorooq Salah Beauty Salon Logo" class="logo-img">[span_0](start_span)[span_0](end_span)
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <h1>SHOROOQ SALAH</h1>
+            <p class="subtitle">BEAUTY SALON</p>
         </div>
-        <h1>SHOROOQ SALAH</h1>
-        <p class="subtitle">BEAUTY SALON</p>
     </header>
 
     <!-- شريط الأقسام للتنقل السريع -->
     <nav class="categories-nav">
-        <button class="cat-btn active" onclick="filterCategory('all')">الكل</button>
-        <button class="cat-btn" onclick="filterCategory('bridal')">العروس</button>
-        <button class="cat-btn" onclick="filterCategory('makeup')">المكياج</button>
-        <button class="cat-btn" onclick="filterCategory('hair')">الشعر</button>
-        <button class="cat-btn" onclick="filterCategory('face')">إزالة الشعر</button>
-        <button class="cat-btn" onclick="filterCategory('lashes')">الرموش والحواجب</button>
+        <button class="cat-btn active" onclick="filterCategory('all', this)">الكل</button>
+        <button class="cat-btn" onclick="filterCategory('bridal', this)">العروس</button>
+        <button class="cat-btn" onclick="filterCategory('makeup', this)">المكياج</button>
+        <button class="cat-btn" onclick="filterCategory('hair', this)">الشعر</button>
+        <button class="cat-btn" onclick="filterCategory('face', this)">إزالة الشعر</button>
+        <button class="cat-btn" onclick="filterCategory('lashes', this)">الرموش والحواجب</button>
     </nav>
 
     <!-- محتوى المنيو -->
@@ -155,12 +153,11 @@
         <p>© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- سكريبت تصفية الأقسام -->
     <script>
-        function filterCategory(category) {
+        function filterCategory(category, clickedBtn) {
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            clickedBtn.classList.add('active');
 
             const sections = document.querySelectorAll('.menu-section');
             sections.forEach(section => {
