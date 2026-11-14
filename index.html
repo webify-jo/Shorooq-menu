@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- الهيدر مع زر الترجمة أعلى اليسار -->
+    <!-- الهيدر مع زر الترجمة -->
     <header class="header">
         <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
         <div class="header-bg"></div>
@@ -20,8 +20,25 @@
         </div>
     </header>
 
-    <!-- حاوية الأقسام (يتم بناؤها تلقائياً حسب اللغة المختارة) -->
+    <!-- الأقسام -->
     <main class="menu-container" id="menuContainer"></main>
+
+    <!-- قسم التواصل ومواقع التواصل الاجتماعي والموقع (اللوكيشن) -->
+    <section class="contact-section">
+        <h3 id="connectTitle">تواصل معنا & موقعنا</h3>
+        <div class="social-links">
+            <a href="https://www.instagram.com/ss_beauty_salon_jo?dlrf=cTdiODYxZm45Y2xh" target="_blank" class="social-btn insta">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.facebook.com/share/g/1Kbg8TBWto/?mibextid=wwXIfr" target="_blank" class="social-btn fb">
+                <i class="fa-brands fa-facebook-f"></i> Facebook
+            </a>
+        </div>
+        <div class="location-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="locationText">الموقع: طبربور، عمان، الأردن</span>
+        </div>
+    </section>
 
     <footer>
         <p id="footerText">© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.</p>
@@ -34,6 +51,8 @@
         const translations = {
             ar: {
                 btnText: "English",
+                connect: "تواصل معنا & موقعنا",
+                location: "الموقع: طبربور، عمان، الأردن",
                 footer: "© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.",
                 categories: [
                     {
@@ -130,6 +149,8 @@
             },
             en: {
                 btnText: "عربي",
+                connect: "Connect With Us & Location",
+                location: "Location: Tabarbour, Amman, Jordan",
                 footer: "© 2026 Shorooq Salah Beauty Salon. All Rights Reserved.",
                 categories: [
                     {
@@ -231,6 +252,8 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.getElementById('langBtn').innerText = data.btnText;
+            document.getElementById('connectTitle').innerText = data.connect;
+            document.getElementById('locationText').innerText = data.location;
             document.getElementById('footerText').innerText = data.footer;
 
             const container = document.getElementById('menuContainer');
@@ -270,7 +293,6 @@
             renderMenu();
         }
 
-        // تشغيل القائمة عند فتح الصفحة
         renderMenu();
     </script>
 </body>
