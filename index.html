@@ -24,7 +24,7 @@
         </div>
     </header>
 
-    <!-- الأقسام -->
+    <!-- الأقسام الرئيسية -->
     <main class="menu-container" id="menuContainer"></main>
 
     <!-- قسم التواصل ومواقع التواصل الاجتماعي واللوكيشن -->
@@ -54,6 +54,7 @@
     <script>
         let currentLang = 'ar';
         let openSectionId = null;
+        let openSubSectionId = null; // لتتبع القسم الفرعي المفتوح داخل الشعر
 
         const translations = {
             ar: {
@@ -67,6 +68,7 @@
                         id: "bridal",
                         icon: "fa-ring",
                         title: "العروس",
+                        isSub: false,
                         items: [
                             { name: "باكيج عروس أبيض (1): مكياج + تسريحة + بدي فاونديشن + تلبيس البدلة", price: "٢٠٠ دينار" },
                             { name: "باكيج عروس أبيض (2): مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر (تركيب) لون عادي", price: "٢٥٠ دينار" },
@@ -78,6 +80,7 @@
                         id: "makeup",
                         icon: "fa-wand-magic-sparkles",
                         title: "المكياج",
+                        isSub: false,
                         items: [
                             { name: "مكياج عيون بدون رموش", price: "١٠ دنانير" },
                             { name: "مكياج عيون مع رموش", price: "١٥ دينار" },
@@ -89,43 +92,75 @@
                         id: "hair",
                         icon: "fa-scissors",
                         title: "الشعر",
-                        items: [
-                            { name: "حمام الشعر", price: "٢ دينار" },
-                            { name: "ويفي ستايل", price: "١٥ دينار" },
-                            { name: "ريترو ستايل", price: "١٥ دينار" },
-                            { name: "تساريح نص رفع", price: "٢٠ دينار" },
-                            { name: "تساريح رفع كامل", price: "٢٠ دينار" },
-                            { name: "تسريحة رفع / نص رفع أطفال", price: "١٥ دينار" },
-                            { name: "تسريحة ويفي أطفال", price: "١٠ دنانير" },
-                            { name: "سشوار (حسب طول وكثافة الشعر)", price: "٥ - ١٢ دينار" },
-                            { name: "سشوار ويفي (إضافة)", price: "+٢ دينار" },
-                            { name: "غرة ستريت", price: "مجاناً" },
-                            { name: "غرة تدريج", price: "٢ دينار" },
-                            { name: "أطراف الشعر", price: "٣ دنانير" },
-                            { name: "قصة كاملة", price: "٥ دنانير" },
-                            { name: "قص شعر كيرلي", price: "٧ دنانير" },
-                            { name: "قص شعر أطفال", price: "٣ دنانير" },
-                            { name: "قص أطراف شعر أطفال", price: "٢ دينار" },
-                            { name: "تست قبل الصبغة واستشارة", price: "مجاني" },
-                            { name: "صبغة جذور (يشمل رينس مجاني)", price: "١٠ دنانير" },
-                            { name: "صبغة لون واحد (باستخدام مواد الزبونة)", price: "٥ - ٧ دنانير" },
-                            { name: "صبغة لون واحد بدون سحب لون", price: "١٥ - ٤٠ دينار" },
-                            { name: "إضافة سحب لون", price: "٢٠ - ٣٠ دينار" },
-                            { name: "تخصيل الشعر بجميع أشكاله (ابتداءً من)", price: "٥٠ دينار" },
-                            { name: "جلسة ديتوكس فروة الرأس", price: "١٥ دينار" },
-                            { name: "جلسة كيو ويب للتغذية والترطيب العميق", price: "١٥ دينار" },
-                            { name: "جلسة زيت بذور العنب للترطيب الداخلي", price: "١٠ دنانير" },
-                            { name: "باكيج ديتوكس فروة الرأس + جلسة كيو ويب", price: "٢٣ دينار" },
-                            { name: "باكيج ديتوكس فروة الرأس + جلسة بذور العنب", price: "٢٠ دينار" },
-                            { name: "إضافة قص + سشوار إلى جلسات العناية", price: "٥ دنانير" },
-                            { name: "فرد بمادة ماء الذهب (حسب الطول والكثافة)", price: "ابتداءً من ٥٠ دينار" },
-                            { name: "فرد بمادة بوتوكس الشعر (حسب الطول والكثافة)", price: "ابتداءً من ٣٥ دينار" }
+                        isSub: true, // قسم رئيسي يحتوي على أقسام فرعية
+                        subSections: [
+                            {
+                                id: "hair_styling",
+                                title: "التساريح والستشوار",
+                                items: [
+                                    { name: "حمام الشعر", price: "٢ دينار" },
+                                    { name: "ويفي ستايل", price: "١٥ دينار" },
+                                    { name: "ريترو ستايل", price: "١٥ دينار" },
+                                    { name: "تساريح نص رفع", price: "٢٠ دينار" },
+                                    { name: "تساريح رفع كامل", price: "٢٠ دينار" },
+                                    { name: "تسريحة رفع / نص رفع أطفال", price: "١٥ دينار" },
+                                    { name: "تسريحة ويفي أطفال", price: "١٠ دنانير" },
+                                    { name: "سشوار (حسب طول وكثافة الشعر)", price: "٥ - ١٢ دينار" },
+                                    { name: "سشوار ويفي (إضافة)", price: "+٢ دينار" }
+                                ]
+                            },
+                            {
+                                id: "hair_cutting",
+                                title: "قص الشعر",
+                                items: [
+                                    { name: "غرة ستريت", price: "مجاناً" },
+                                    { name: "غرة تدريج", price: "٢ دينار" },
+                                    { name: "أطراف الشعر", price: "٣ دنانير" },
+                                    { name: "قصة كاملة", price: "٥ دنانير" },
+                                    { name: "قص شعر كيرلي", price: "٧ دنانير" },
+                                    { name: "قص شعر أطفال", price: "٣ دنانير" },
+                                    { name: "قص أطراف شعر أطفال", price: "٢ دينار" }
+                                ]
+                            },
+                            {
+                                id: "hair_coloring",
+                                title: "صبغ وتلوين الشعر",
+                                items: [
+                                    { name: "تست قبل الصبغة واستشارة", price: "مجاني" },
+                                    { name: "صبغة جذور (يشمل رينس مجاني)", price: "١٠ دنانير" },
+                                    { name: "صبغة لون واحد (باستخدام مواد الزبونة)", price: "٥ - ٧ دنانير" },
+                                    { name: "صبغة لون واحد بدون سحب لون (حسب الطول والكثافة)", price: "١٥ - ٤٠ دينار" },
+                                    { name: "إضافة سحب لون", price: "٢٠ - ٣٠ دينار" },
+                                    { name: "تخصيل الشعر بجميع أشكاله (ابتداءً من)", price: "٥٠ دينار" }
+                                ]
+                            },
+                            {
+                                id: "hair_care",
+                                title: "جلسات العناية بالشعر",
+                                items: [
+                                    { name: "جلسة ديتوكس فروة الرأس", price: "١٥ دينار" },
+                                    { name: "جلسة كيو ويب للتغذية والترطيب العميق", price: "١٥ دينار" },
+                                    { name: "جلسة زيت بذور العنب للترطيب الداخلي", price: "١٠ دنانير" },
+                                    { name: "باكيج ديتوكس فروة الرأس + جلسة كيو ويب", price: "٢٣ دينار" },
+                                    { name: "باكيج ديتوكس فروة الرأس + جلسة بذور العنب", price: "٢٠ دينار" },
+                                    { name: "إضافة قص + سشوار إلى جلسات العناية", price: "٥ دنانير" }
+                                ]
+                            },
+                            {
+                                id: "hair_treatment",
+                                title: "فرد الشعر الدائم",
+                                items: [
+                                    { name: "فرد بمادة ماء الذهب (حسب الطول والكثافة)", price: "ابتداءً من ٥٠ دينار" },
+                                    { name: "فرد بمادة بوتوكس الشعر (حسب الطول والكثافة)", price: "ابتداءً من ٣٥ دينار" }
+                                ]
+                            }
                         ]
                     },
                     {
                         id: "face",
                         icon: "fa-spa",
                         title: "إزالة شعر الوجه",
+                        isSub: false,
                         items: [
                             { name: "واكس الوجه كامل", price: "٥ دنانير" },
                             { name: "واكس الوجه مع أسفل الذقن والرقبة", price: "٧ دنانير" },
@@ -140,6 +175,7 @@
                         id: "lashes",
                         icon: "fa-eye",
                         title: "تجميل الرموش والحواجب",
+                        isSub: false,
                         items: [
                             { name: "رفع الرموش LVL", price: "١٥ دينار" },
                             { name: "رفع الحواجب (هافانا) مع تشقير", price: "١٥ دينار" },
@@ -166,6 +202,7 @@
                         id: "bridal",
                         icon: "fa-ring",
                         title: "Bridal Packages",
+                        isSub: false,
                         items: [
                             { name: "White Bridal Package (1): Makeup + Hairstyle + Body Foundation + Dress Fitting", price: "200 JOD" },
                             { name: "White Bridal Package (2): Makeup + Hairstyle + Body Foundation + Thermal Hair Extensions + Regular Nails", price: "250 JOD" },
@@ -177,6 +214,7 @@
                         id: "makeup",
                         icon: "fa-wand-magic-sparkles",
                         title: "Makeup",
+                        isSub: false,
                         items: [
                             { name: "Eye Makeup without Lashes", price: "10 JOD" },
                             { name: "Eye Makeup with Lashes", price: "15 JOD" },
@@ -188,122 +226,50 @@
                         id: "hair",
                         icon: "fa-scissors",
                         title: "Hair Services",
-                        items: [
-                            { name: "Hair Wash", price: "2 JOD" },
-                            { name: "Wavy Style", price: "15 JOD" },
-                            { name: "Retro Style", price: "15 JOD" },
-                            { name: "Half-Up Hairstyle", price: "20 JOD" },
-                            { name: "Full Updo Hairstyle", price: "20 JOD" },
-                            { name: "Kids Updo / Half-Up Hairstyle", price: "15 JOD" },
-                            { name: "Kids Wavy Hairstyle", price: "10 JOD" },
-                            { name: "Blow Dry (Depending on length & thickness)", price: "5 - 12 JOD" },
-                            { name: "Wavy Blow Dry (Add-on)", price: "+2 JOD" },
-                            { name: "Straight Bangs Trim", price: "Free" },
-                            { name: "Layered Bangs Trim", price: "2 JOD" },
-                            { name: "Hair Ends Trim", price: "3 JOD" },
-                            { name: "Full Haircut", price: "5 JOD" },
-                            { name: "Curly Haircut", price: "7 JOD" },
-                            { name: "Kids Haircut", price: "3 JOD" },
-                            { name: "Kids Hair Ends Trim", price: "2 JOD" },
-                            { name: "Hair Dye Strand Test & Consultation", price: "Free" },
-                            { name: "Root Touch-up (Includes free rinse)", price: "10 JOD" },
-                            { name: "Single Color Dye (Client's own product)", price: "5 - 7 JOD" },
-                            { name: "Single Color Dye without Bleaching", price: "15 - 40 JOD" },
-                            { name: "Bleaching Add-on", price: "20 - 30 JOD" },
-                            { name: "Hair Highlights (All styles, starting from)", price: "50 JOD" },
-                            { name: "Scalp Detox Session", price: "15 JOD" },
-                            { name: "Q-Web Deep Nourishing & Hydration Session", price: "15 JOD" },
-                            { name: "Grapeseed Oil Internal Hydration Session", price: "10 JOD" },
-                            { name: "Package: Scalp Detox + Q-Web Session", price: "23 JOD" },
-                            { name: "Package: Scalp Detox + Grapeseed Oil Session", price: "20 JOD" },
-                            { name: "Add Haircut + Blow Dry to Care Sessions", price: "5 JOD" },
-                            { name: "Gold Water Keratin Treatment (By length & thickness)", price: "From 50 JOD" },
-                            { name: "Hair Botox Treatment (By length & thickness)", price: "From 35 JOD" }
-                        ]
-                    },
-                    {
-                        id: "face",
-                        icon: "fa-spa",
-                        title: "Facial Hair Removal",
-                        items: [
-                            { name: "Full Face Wax", price: "5 JOD" },
-                            { name: "Full Face Wax with Chin & Neck", price: "7 JOD" },
-                            { name: "Full Face Threading", price: "5 JOD" },
-                            { name: "Eyebrows", price: "2 JOD" },
-                            { name: "Upper Lip", price: "1 JOD" },
-                            { name: "Dermaplaning Facial Hair Removal", price: "10 JOD" },
-                            { name: "Flamingo Shaving Facial Hair Removal", price: "3 JOD" }
-                        ]
-                    },
-                    {
-                        id: "lashes",
-                        icon: "fa-eye",
-                        title: "Lashes & Brows",
-                        items: [
-                            { name: "LVL Lash Lift", price: "15 JOD" },
-                            { name: "Havana Brow Lamination with Bleaching", price: "15 JOD" },
-                            { name: "Lash Lift + Brow Lamination", price: "25 JOD" },
-                            { name: "Brow Bleaching without Lamination", price: "5 JOD" },
-                            { name: "Daily Strip Lashes Application", price: "3 JOD" },
-                            { name: "Weekly Lashes Application", price: "10 JOD" },
-                            { name: "Monthly Classic Lash Extensions", price: "25 JOD" },
-                            { name: "Monthly Hybrid Lash Extensions", price: "30 JOD" },
-                            { name: "Monthly Volume Lash Extensions", price: "40 JOD" },
-                            { name: "Monthly Silk Lash Extensions", price: "50 JOD" }
-                        ]
-                    }
-                ]
-            }
-        };
-
-        function renderMenu() {
-            const data = translations[currentLang];
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.getElementById('langBtn').innerText = data.btnText;
-            document.getElementById('headerLocation').innerText = data.headerLoc;
-            document.getElementById('connectTitle').innerText = data.connect;
-            document.getElementById('locationText').innerText = data.location;
-            document.getElementById('footerText').innerText = data.footer;
-
-            const container = document.getElementById('menuContainer');
-            container.innerHTML = '';
-
-            data.categories.forEach(cat => {
-                const isOpen = openSectionId === cat.id;
-                let itemsHtml = cat.items.map(item => `
-                    <div class="service-item">
-                        <span>${item.name}</span>
-                        <span class="price">${item.price}</span>
-                    </div>
-                `).join('');
-
-                container.innerHTML += `
-                    <div class="category-card ${isOpen ? 'active' : ''}" onclick="toggleSection('${cat.id}')">
-                        <div class="card-header">
-                            <i class="fa-solid ${cat.icon}"></i>
-                            <h2>${cat.title}</h2>
-                            <i class="fa-solid fa-chevron-down arrow"></i>
-                        </div>
-                        <div id="${cat.id}" class="card-content" style="display: ${isOpen ? 'block' : 'none'};">
-                            ${itemsHtml}
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function toggleSection(id) {
-            openSectionId = (openSectionId === id) ? null : id;
-            renderMenu();
-        }
-
-        function toggleLanguage() {
-            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
-            renderMenu();
-        }
-
-        renderMenu();
-    </script>
-</body>
-</html>
+                        isSub: true,
+                        subSections: [
+                            {
+                                id: "hair_styling",
+                                title: "Styling & Blow Dry",
+                                items: [
+                                    { name: "Hair Wash", price: "2 JOD" },
+                                    { name: "Wavy Style", price: "15 JOD" },
+                                    { name: "Retro Style", price: "15 JOD" },
+                                    { name: "Half-Up Hairstyle", price: "20 JOD" },
+                                    { name: "Full Updo Hairstyle", price: "20 JOD" },
+                                    { name: "Kids Updo / Half-Up Hairstyle", price: "15 JOD" },
+                                    { name: "Kids Wavy Hairstyle", price: "10 JOD" },
+                                    { name: "Blow Dry (Depending on length & thickness)", price: "5 - 12 JOD" },
+                                    { name: "Wavy Blow Dry (Add-on)", price: "+2 JOD" }
+                                ]
+                            },
+                            {
+                                id: "hair_cutting",
+                                title: "Hair Cutting",
+                                items: [
+                                    { name: "Straight Bangs Trim", price: "Free" },
+                                    { name: "Layered Bangs Trim", price: "2 JOD" },
+                                    { name: "Hair Ends Trim", price: "3 JOD" },
+                                    { name: "Full Haircut", price: "5 JOD" },
+                                    { name: "Curly Haircut", price: "7 JOD" },
+                                    { name: "Kids Haircut", price: "3 JOD" },
+                                    { name: "Kids Hair Ends Trim", price: "2 JOD" }
+                                ]
+                            },
+                            {
+                                id: "hair_coloring",
+                                title: "Hair Coloring",
+                                items: [
+                                    { name: "Hair Dye Strand Test & Consultation", price: "Free" },
+                                    { name: "Root Touch-up (Includes free rinse)", price: "10 JOD" },
+                                    { name: "Single Color Dye (Client's own product)", price: "5 - 7 JOD" },
+                                    { name: "Single Color Dye without Bleaching (By length & thickness)", price: "15 - 40 JOD" },
+                                    { name: "Bleaching Add-on", price: "20 - 30 JOD" },
+                                    { name: "Hair Highlights (All styles, starting from)", price: "50 JOD" }
+                                ]
+                            },
+                            {
+                                id: "hair_care",
+                                title: "Hair Care Sessions",
+                                items: [
+                                    { name: "Scalp Detox Session", price: "15 JOD"
