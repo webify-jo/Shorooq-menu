@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shorooq Salah Beauty Salon - المنيو الإلكتروني</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- استيراد خط أنيق من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- الهيدر واللوجو -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Shorooq Salah Beauty Salon Logo" class="logo-img">
+        </div>
+        <h1>SHOROOQ SALAH</h1>
+        <p class="subtitle">BEAUTY SALON</p>
+        <div class="divider"><span>✨</span></div>
+    </header>
+
+    <!-- شريط الأقسام للتنقل السريع -->
+    <nav class="categories-nav">
+        <button class="cat-btn active" onclick="filterCategory('all')">الكل</button>
+        <button class="cat-btn" onclick="filterCategory('bridal')">العروس</button>
+        <button class="cat-btn" onclick="filterCategory('makeup')">المكياج</button>
+        <button class="cat-btn" onclick="filterCategory('hair')">الشعر</button>
+        <button class="cat-btn" onclick="filterCategory('face')">إزالة الشعر</button>
+        <button class="cat-btn" onclick="filterCategory('lashes')">الرموش والحواجب</button>
+    </nav>
+
+    <!-- محتوى المنيو -->
+    <main class="menu-container">
+
+        <!-- 1. قسم العروس -->
+        <section class="menu-section" data-category="bridal">
+            <h2><i class="fa-solid fa-ring"></i> العروس</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-info">
+                        <h3>باكيج عروس أبيض (1)</h3>
+                        <p>مكياج + تسريحة + بدي فاونديشن + تلبيس البدلة</p>
+                    </div>
+                    <div class="item-price">٢٠٠ دينار</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-info">
+                        <h3>باكيج عروس أبيض (2)</h3>
+                        <p>مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر (تركيب) لون عادي</p>
+                    </div>
+                    <div class="item-price">٢٥٠ دينار</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-info">
+                        <h3>باكيج عروس أبيض (3)</h3>
+                        <p>مكياج + تسريحة + بدي فاونديشن + اكستنشن حراري + أظافر جل كلر</p>
+                    </div>
+                    <div class="item-price">٣٠٠ دينار</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-info">
+                        <h3>عروس خطبة</h3>
+                        <p>مكياج + تسريحة + تلبيس بدلة</p>
+                    </div>
+                    <div class="item-price">١٥٠ دينار</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. قسم المكياج -->
+        <section class="menu-section" data-category="makeup">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> المكياج</h2>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-info"><h3>مكياج عيون بدون رموش</h3></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>مكياج عيون مع رموش</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>مكياج وجه كامل بدون رموش</h3></div><div class="item-price">٢٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>مكياج وجه كامل مع رموش</h3></div><div class="item-price">٢٥ دينار</div></div>
+            </div>
+        </section>
+
+        <!-- 3. قسم الشعر -->
+        <section class="menu-section" data-category="hair">
+            <h2><i class="fa-solid fa-scissors"></i> الشعر (تساريح، قص، صبغة، وعناية)</h2>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-info"><h3>حمام الشعر</h3></div><div class="item-price">٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>ويفي ستايل</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>ريترو ستايل</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تساريح نص رفع</h3></div><div class="item-price">٢٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تساريح رفع كامل</h3></div><div class="item-price">٢٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تسريحة رفع / نص رفع أطفال</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تسريحة ويفي أطفال</h3></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>سشوار</h3><p>حسب طول وكثافة الشعر</p></div><div class="item-price">٥ - ١٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>سشوار ويفي</h3><p>إضافة على السشوار</p></div><div class="item-price">+٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>غرة ستريت</h3></div><div class="item-price">مجاناً</div></div>
+                <div class="item-card"><div class="item-info"><h3>غرة تدريج</h3></div><div class="item-price">٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>أطراف الشعر</h3></div><div class="item-price">٣ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>قصة كاملة</h3></div><div class="item-price">٥ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>قص شعر كيرلي</h3></div><div class="item-price">٧ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>قص شعر أطفال</h3></div><div class="item-price">٣ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>قص أطراف شعر أطفال</h3></div><div class="item-price">٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تست قبل الصبغة واستشارة</h3></div><div class="item-price">مجاني</div></div>
+                <div class="item-card"><div class="item-info"><h3>صبغة جذور</h3><p>يشمل رينس مجاني</p></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>صبغة لون واحد</h3><p>باستخدام مواد الزبونة</p></div><div class="item-price">٥ - ٧ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>صبغة لون واحد بدون سحب لون</h3><p>حسب الطول والكثافة</p></div><div class="item-price">١٥ - ٤٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>إضافة سحب لون</h3></div><div class="item-price">٢٠ - ٣٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تخصيل الشعر بجميع أشكاله</h3></div><div class="item-price">ابتداءً من ٥٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>جلسة ديتوكس فروة الرأس</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>جلسة "كيو ويب" للتغذية والترطيب العميق</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>جلسة زيت بذور العنب للترطيب الداخلي</h3></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>باكيج ديتوكس فروة الرأس + جلسة "كيو ويب"</h3></div><div class="item-price">٢٣ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>باكيج ديتوكس فروة الرأس + جلسة بذور العنب</h3></div><div class="item-price">٢٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>إضافة قص + سشوار إلى جلسات العناية</h3></div><div class="item-price">٥ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>فرد بمادة ماء الذهب</h3><p>حسب الطول والكثافة</p></div><div class="item-price">ابتداءً من ٥٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>فرد بمادة بوتوكس الشعر</h3><p>حسب الطول والكثافة</p></div><div class="item-price">ابتداءً من ٣٥ دينار</div></div>
+            </div>
+        </section>
+
+        <!-- 4. قسم إزالة شعر الوجه -->
+        <section class="menu-section" data-category="face">
+            <h2><i class="fa-solid fa-spa"></i> إزالة شعر الوجه</h2>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-info"><h3>واكس الوجه كامل</h3></div><div class="item-price">٥ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>واكس الوجه مع أسفل الذقن والرقبة</h3></div><div class="item-price">٧ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>خيط وجه كامل</h3></div><div class="item-price">٥ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>حواجب</h3></div><div class="item-price">٢ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>شوارب</h3></div><div class="item-price">١ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>إزالة شعر الوجه بالديرمابلانينج</h3></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>إزالة شعر الوجه بالشيفنج (فلامينجو)</h3></div><div class="item-price">٣ دنانير</div></div>
+            </div>
+        </section>
+
+        <!-- 5. قسم الرموش والحواجب -->
+        <section class="menu-section" data-category="lashes">
+            <h2><i class="fa-solid fa-eye"></i> تجميل الرموش والحواجب</h2>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-info"><h3>رفع الرموش LVL</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>رفع الحواجب (هافانا) مع تشقير</h3></div><div class="item-price">١٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>رفع الرموش + حواجب</h3></div><div class="item-price">٢٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تشقير الحواجب بدون رفع</h3></div><div class="item-price">٥ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش "لاين" يومي</h3></div><div class="item-price">٣ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش أسبوعي</h3></div><div class="item-price">١٠ دنانير</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري كلاسيك</h3></div><div class="item-price">٢٥ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري هايبرد</h3></div><div class="item-price">٣٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري فوليوم</h3></div><div class="item-price">٤٠ دينار</div></div>
+                <div class="item-card"><div class="item-info"><h3>تركيب رموش شهري سيلك</h3></div><div class="item-price">٥٠ دينار</div></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- سكريبت تصفية الأقسام -->
+    <script>
+        function filterCategory(category) {
+            // تفعيل الزر النشط
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // إظهار وإخفاء الأقسام
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                if (category === 'all' || section.getAttribute('data-category') === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
