@@ -10,14 +10,10 @@
 </head>
 <body>
 
-    <!-- الهيدر مع زر الترجمة وزر الواتساب أعلى اليسار -->
+    <!-- الهيدر مع العنوان على اليمين وزر الترجمة على اليسار -->
     <header class="header">
-        <div class="top-buttons">
-            <a href="https://wa.me/962790227489" target="_blank" class="whatsapp-top-btn" title="تواصل واتساب">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
-        </div>
+        <div class="header-location-badge" id="headerLocation">طبربور، عمان</div>
+        <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">English</button>
         <div class="header-bg"></div>
         <div class="header-content">
             <h1>SHOROOQ SALAH</h1>
@@ -59,6 +55,7 @@
         const translations = {
             ar: {
                 btnText: "English",
+                headerLoc: "طبربور، عمان",
                 connect: "تواصل معنا & موقعنا",
                 location: "الموقع: طبربور، عمان، الأردن",
                 footer: "© 2026 Shorooq Salah Beauty Salon. جميع الحقوق محفوظة.",
@@ -157,6 +154,7 @@
             },
             en: {
                 btnText: "عربي",
+                headerLoc: "Tabarbour, Amman",
                 connect: "Connect With Us & Location",
                 location: "Location: Tabarbour, Amman, Jordan",
                 footer: "© 2026 Shorooq Salah Beauty Salon. All Rights Reserved.",
@@ -260,6 +258,7 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.getElementById('langBtn').innerText = data.btnText;
+            document.getElementById('headerLocation').innerText = data.headerLoc;
             document.getElementById('connectTitle').innerText = data.connect;
             document.getElementById('locationText').innerText = data.location;
             document.getElementById('footerText').innerText = data.footer;
