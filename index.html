@@ -15,7 +15,7 @@
     <!-- الهيدر واللوجو -->
     <header class="header">
         <div class="logo-container">
-            <img src="logo.jpg" alt="Shorooq Salah Beauty Salon Logo" class="logo-img">
+            <img src="46d3a387-3bd2-41bc-b02e-7036661c0460.jpeg" alt="Shorooq Salah Beauty Salon Logo" class="logo-img">
         </div>
         <h1>SHOROOQ SALAH</h1>
         <p class="subtitle">BEAUTY SALON</p>
@@ -159,12 +159,10 @@
     <!-- سكريبت تصفية الأقسام -->
     <script>
         function filterCategory(category) {
-            // تفعيل الزر النشط
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // إظهار وإخفاء الأقسام
             const sections = document.querySelectorAll('.menu-section');
             sections.forEach(section => {
                 if (category === 'all' || section.getAttribute('data-category') === category) {
